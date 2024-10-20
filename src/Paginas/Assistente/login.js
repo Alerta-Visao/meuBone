@@ -25,7 +25,7 @@ export default function Login({navigation}) {
           placeholderTextColor = "white"
           secureTextEntry={true}
         />
-        <TouchableOpacity onPress={() => navigation.navigate('Gps')} style={styles.fundoBotao}>
+        <TouchableOpacity onPress={() => navigation.navigate('Rastrear')} style={styles.fundoBotao}>
           <Text style={styles.textoBotao}>
             Entrar
           </Text>
