@@ -1,9 +1,9 @@
 import React from 'react'
 import { useState } from 'react';
-import {View, Text, StyleSheet} from 'react-native'
+import {View, Text, StyleSheet, TextInput, TouchableOpacity} from 'react-native'
 import { CheckBox } from 'react-native-elements'
 
-export function ConfigAvancada(){
+export default function ConfigAvancada({navigation}){
    
    return(
       <View style={styles.container}>
@@ -14,6 +14,32 @@ export function ConfigAvancada(){
             </Text>
          </View>        
     
+         
+
+         <View style={{flex: 0.5, flexDirection: 'row',  alignItems: 'flex-end', justifyContent: 'center'}}>
+         <TouchableOpacity style={{backgroundColor: '#333232',
+                                  padding: 15,
+                                  paddingLeft: '20%',
+                                  paddingRight: '20%',}}
+            onPress={() => navigation.goBack()}>
+            <Text style={{fontSize: 20, 
+                        color: 'white'}}>
+            Voltar
+          </Text>
+         </TouchableOpacity>
+         <TouchableOpacity style={{backgroundColor: '#232323',
+                                  padding: 15,
+                                  paddingLeft: '16%',
+                                  paddingRight: '16%',
+                                  }} 
+          onPress={() => navigation.navigate('')}>
+          <Text style={{fontSize: 20, 
+                        color: '#FFCF66'}}>
+            Salvar
+          </Text>
+        </TouchableOpacity>
+      </View>
+
       </View>
    ) 
 }
@@ -43,7 +69,9 @@ const styles = StyleSheet.create({
    //estilo do texto do titulo
    textoTitulo:{
       color: '#FFCF66',
-      fontSize: 40,
+      fontSize: 33,
       fontWeight: '', // Negrito
    },
+   //estilo da inputBox
+
 })

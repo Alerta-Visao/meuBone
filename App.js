@@ -15,6 +15,7 @@ import EscolherUsuario from './src/Paginas/Assistente/escolherUsuario';
 import UsuarioAcompanhante from './src/Paginas/Assistente/usuarioAcompanhante';
 import UsuarioPessoaAssistida from './src/Paginas/Assistente/usuarioPessoaAssistida';
 import Rastrear from './src/Paginas/Assistente/rastreamento';
+import ConfigAvancada from './src/Paginas/Pessoa Assistida/configAvancada';
 
 //initialRouteName define a pagina inicial do Assistente
 const Stack = createNativeStackNavigator();
@@ -35,6 +36,7 @@ export default function App(){
         <Stack.Screen name='UsuarioPessoaAssistida' component={UsuarioPessoaAssistida}/>
         <Stack.Screen name="homePA" component={HomePA} />
         <Stack.Screen name="config" component={AtivarSensores} />
+        <Stack.Screen name="configAvancada" component={ConfigAvancada} />
       </Stack.Navigator>
     </NavigationContainer>
   );

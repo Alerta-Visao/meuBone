@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, StyleSheet, Text} from 'react-native'
+import { View, StyleSheet, Text, TouchableOpacity, Image} from 'react-native'
 import { useEffect, useState } from 'react';
 import MapView, { Marker } from 'react-native-maps';
 import * as Location from 'expo-location';
@@ -68,6 +68,26 @@ export default function Rastrear({navigation}){
          />
       </MapView>
       )}
+
+<View style={{flex: 1, flexDirection: 'row',  alignItems: 'flex-end', justifyContent: 'center'}}>
+         <TouchableOpacity style={{backgroundColor: '#333232',
+                                  padding: 16,
+                                  paddingLeft: '20%',
+                                  paddingRight: '20%',}}
+            onPress={() => navigation.goBack()}>
+            <Text style={{fontSize: 20, 
+                        color: 'white'}}>
+            Voltar
+          </Text>
+         </TouchableOpacity>
+         <TouchableOpacity style={{backgroundColor: '#232323',
+                                  padding: 15,
+                                  paddingLeft: '20%',
+                                  paddingRight: '20%',}} 
+          onPress={() => navigation.navigate('configAvancada')}>
+         <Image source={require('../../assets/iconeUsuarioPequeno.png')} styles={StyleSheet.icone}/>
+        </TouchableOpacity>
+      </View>
    </View>
    )}
 
@@ -115,6 +135,6 @@ const styles = StyleSheet.create({
       alignItems: 'center',
       paddingTop: 20,
       fontSize: 20,
-   } 
+   },
  })
 

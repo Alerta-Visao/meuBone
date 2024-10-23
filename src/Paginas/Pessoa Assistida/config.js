@@ -1,9 +1,9 @@
 import React from 'react'
 import { useState } from 'react';
-import {View, Text, StyleSheet} from 'react-native'
+import {View, Text, StyleSheet,TouchableOpacity} from 'react-native'
 import { CheckBox } from 'react-native-elements'
 
-export function AtivarSensores(){
+export function AtivarSensores({navigation}){
    const [check1, setCheck1] = useState(false);
    const [check2, setCheck2] = useState(false);
    const [check3, setCheck3] = useState(true);
@@ -58,6 +58,30 @@ export function AtivarSensores(){
                      />
             </View>
          </View>
+
+         <View style={{flex: 0.5, flexDirection: 'row',  alignItems: 'flex-end', justifyContent: 'center'}}>
+         <TouchableOpacity style={{backgroundColor: '#333232',
+                                  padding: 15,
+                                  paddingLeft: '20%',
+                                  paddingRight: '20%',}}
+            onPress={() => navigation.goBack()}>
+            <Text style={{fontSize: 20, 
+                        color: 'white'}}>
+            Voltar
+          </Text>
+         </TouchableOpacity>
+         <TouchableOpacity style={{backgroundColor: '#232323',
+                                  padding: 15,
+                                  paddingLeft: '16%',
+                                  paddingRight: '16%',}} 
+          onPress={() => navigation.navigate('configAvancada')}>
+          <Text style={{fontSize: 20, 
+                        color: '#FFCF66'}}>
+            Avançado
+          </Text>
+        </TouchableOpacity>
+      </View>
+
       </View>
    ) 
 }
