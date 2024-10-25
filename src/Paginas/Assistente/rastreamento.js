@@ -69,26 +69,26 @@ export default function Rastrear({navigation}){
       </MapView>
       )}
 
-<View style={{flex: 1, flexDirection: 'row',  alignItems: 'flex-end', justifyContent: 'center'}}>
-         <TouchableOpacity style={{backgroundColor: '#333232',
-                                  padding: 16,
-                                  paddingLeft: '20%',
-                                  paddingRight: '20%',}}
-            onPress={() => navigation.goBack()}>
-            <Text style={{fontSize: 20, 
-                        color: 'white'}}>
-            Voltar
-          </Text>
-         </TouchableOpacity>
-         <TouchableOpacity style={{backgroundColor: '#232323',
-                                  padding: 15,
-                                  paddingLeft: '20%',
-                                  paddingRight: '20%',}} 
-          onPress={() => navigation.navigate('configAvancada')}>
-         <Image source={require('../../assets/iconeUsuarioPequeno.png')} styles={StyleSheet.icone}/>
-        </TouchableOpacity>
+            <View style={{flex: 1, flexDirection: 'row',  alignItems: 'flex-end', justifyContent: 'center'}}>
+               <TouchableOpacity style={{backgroundColor: '#333232',
+                                       padding: 16,
+                                       paddingLeft: '20%',
+                                       paddingRight: '20%',}}
+                  onPress={() => navigation.goBack()}>
+                  <Text style={{fontSize: 20, 
+                              color: 'white'}}>
+                  Voltar
+               </Text>
+               </TouchableOpacity>
+               <TouchableOpacity style={{backgroundColor: '#232323',
+                                       padding: 15,
+                                       paddingLeft: '20%',
+                                       paddingRight: '20%',}} 
+               onPress={() => navigation.navigate('EscolherUsuario')}>
+               <Image source={require('../../assets/iconeUsuarioPequeno.png')} styles={StyleSheet.icone}/>
+            </TouchableOpacity>
+            </View>
       </View>
-   </View>
    )}
 
 
