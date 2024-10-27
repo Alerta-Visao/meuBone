@@ -1,11 +1,11 @@
 import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 
 
-export default function ModalConexaoEstabelecida({navigation}){
+export default function ModalConexaoEstabelecida({fechar}){
     return(
         <View style={styles.container}>
             <View style={styles.conteudo}>
-                <Text style={styles.mensagem}>Dispositivo Acionado!</Text>
+                <Text style={styles.mensagem}>Dispositivo Pareado!</Text>
                 <TouchableOpacity onPress={fechar} style={styles.botao}>
                     <Text style={styles.botaoTexto}>Fechar</Text>
                 </TouchableOpacity>

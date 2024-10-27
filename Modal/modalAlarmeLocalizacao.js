@@ -1,11 +1,11 @@
 import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 
 
-export default function ModalAlarmeLocalizacao({navigation}){
+export default function ModalAlarmeLocalizacao({fechar}){
     return(
         <View style={styles.container}>
             <View style={styles.conteudo}>
-                <Text style={styles.mensagem}>Alarme Acionado!</Text>
+                <Text style={styles.mensagem}>Chapéu Acionado!</Text>
                 <TouchableOpacity onPress={fechar} style={styles.botao}>
                     <Text style={styles.botaoTexto}>OK</Text>
                 </TouchableOpacity>

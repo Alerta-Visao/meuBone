@@ -1,7 +1,7 @@
 import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 
 
-export default function ModalEmergencia({navigation}){
+export default function ModalEmergencia({fechar}){
     return(
         <View style={styles.container}>
             <View style={styles.conteudo}>

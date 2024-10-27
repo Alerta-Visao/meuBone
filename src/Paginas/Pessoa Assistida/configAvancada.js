@@ -1,13 +1,20 @@
 import React from 'react'
 import { useState } from 'react';
-import {View, Text, StyleSheet, TextInput, TouchableOpacity} from 'react-native'
-import { CheckBox, withTheme } from 'react-native-elements'
+import {View, Text, StyleSheet, TextInput, TouchableOpacity, Modal} from 'react-native'
+
+import ModalConfiguracoesSalvas from '../../../Modal/modalConfiguracoesSalvas'
 
 export default function ConfigAvancada({navigation}){
 
    const [number1, setNumber1] = useState(0);
    const [number2, setNumber2] = useState(0);
    const [number3, setNumber3] = useState(0);
+
+   const [modalVisible, setModalVisible] = useState(false)
+
+   function chamarModal(){
+     setModalVisible(true);
+   }
    
    return(
       <View style={styles.container}>
@@ -83,11 +90,14 @@ export default function ConfigAvancada({navigation}){
                                   paddingLeft: '16%',
                                   paddingRight: '16%',
                                   }} 
-          onPress={() => navigation.navigate('')}>
+            onPress={chamarModal}>
           <Text style={{fontSize: 20, 
                         color: '#FFCF66'}}>
             Salvar
           </Text>
+          <Modal visible={modalVisible} animationType='fade' transparent={true}>
+            <ModalConfiguracoesSalvas fechar={() => setModalVisible(false)}/>
+          </Modal>
         </TouchableOpacity>
       </View>
 

@@ -1,15 +1,35 @@
 import React from 'react'
 import { useState } from 'react'
-import { View, Text, StyleSheet, TouchableOpacity, Image} from 'react-native'
+import { View, Text, StyleSheet, TouchableOpacity, Image, Modal} from 'react-native'
+
+import ModalConexaoEstabelecida from '../../../Modal/modalConexaoEstabelecida'
+import ModalEmergencia from '../../../Modal/modalEmergencia'
+import ModalAlarmeLocalizacao from '../../../Modal/modalAlarmeLocalizacao'
 
 export function HomePA({ navigation }){
+  const [modalBluetoothVisible, setModalBluetoothVisible] = useState(false)
+  const [modalEmergenciaVisible, setModalEmergenciaVisible] = useState(false)
+  const [modalAlarmeVisible, setModalAlarmeVisible] = useState(false)
+
+  function chamarModalBluetooth(){
+    setModalBluetoothVisible(true);
+  }
+  function chamarModalEmergencia(){
+    setModalEmergenciaVisible(true);
+  }
+  function chamarModalAlarme(){
+    setModalAlarmeVisible(true);
+  }
 
   return(
     <View style={styles.container}> 
     {/*Botão Conectar ao Bluetooth */}
 
-      <TouchableOpacity style={styles.buttonTopStyle}>
+      <TouchableOpacity style={styles.buttonTopStyle} onPress={chamarModalBluetooth}>
         <Image source={require('../../assets/buttonBluetooth.png')} style={styles.imageBluetooth}/>
+          <Modal visible={modalBluetoothVisible} animationType='fade' transparent={true}>
+              <ModalConexaoEstabelecida fechar={() => setModalBluetoothVisible(false)}/>
+          </Modal>
       </TouchableOpacity>
 
     {/*Botão Conectar Voltar */}
@@ -26,13 +46,19 @@ export function HomePA({ navigation }){
         </TouchableOpacity>
       
       {/*Botão de Emergência */}
-        <TouchableOpacity>
+        <TouchableOpacity onPress={chamarModalEmergencia}>
           <Image source={require('../../assets/buttonEmergencia.png')} style={styles.imageButton}/>
+          <Modal visible={modalEmergenciaVisible} animationType='fade' transparent={true}>
+              <ModalEmergencia fechar={() => setModalEmergenciaVisible(false)}/>
+          </Modal>
         </TouchableOpacity>
 
         {/*Botão de Rastreamento */}  
-        <TouchableOpacity>
+        <TouchableOpacity onPress={chamarModalAlarme}>
           <Image source={require('../../assets/buttonRastrear.png')} style={styles.imageButton}/>
+          <Modal visible={modalAlarmeVisible} animationType='fade' transparent={true}>
+              <ModalAlarmeLocalizacao fechar={() => setModalAlarmeVisible(false)}/>
+          </Modal>
         </TouchableOpacity>
         </View>
 
