@@ -4,7 +4,13 @@ import {View, Text, StyleSheet, TextInput, TouchableOpacity, Modal} from 'react-
 
 import ModalConfiguracoesSalvas from '../../../Modal/modalConfiguracoesSalvas'
 
+import { Dimensions } from 'react-native';
+import { color } from 'react-native-elements/dist/helpers';
+const { height } = Dimensions.get('window');
+
+
 export default function ConfigAvancada({navigation}){
+   
 
    const [number1, setNumber1] = useState(0);
    const [number2, setNumber2] = useState(0);
@@ -30,7 +36,7 @@ export default function ConfigAvancada({navigation}){
       <View style={styles.containerConfig}>
 
          {/* Campo 1 */}
-         <View style={styles.containerDistancia}>
+         <View style={styles.config}>
             <Text style={styles.configText}>Longe</Text>
                <TouchableOpacity onPress={() => setNumber1(number1 - 1)} style={styles.button}>
                   <Text style={styles.buttonText}>-</Text>
@@ -44,7 +50,7 @@ export default function ConfigAvancada({navigation}){
          </View>
 
          {/* Campo 2 */}
-         <View style={styles.containerDistancia}>
+         <View style={styles.config}>
             <Text style={styles.configText}>Médio</Text>
             <TouchableOpacity onPress={() => setNumber2(number2 - 1)} style={styles.button}>
                <Text style={styles.buttonText}>-</Text>
@@ -58,7 +64,7 @@ export default function ConfigAvancada({navigation}){
          </View>
 
           {/* Campo 3 */}
-          <View style={styles.containerDistancia}>
+          <View style={styles.config}>
             <Text style={styles.configText}>Muito Perto</Text>
             <TouchableOpacity onPress={() => setNumber3(number3 - 1)} style={styles.button}>
                <Text style={styles.buttonText}>-</Text>
@@ -73,33 +79,24 @@ export default function ConfigAvancada({navigation}){
       </View>
     
       
-         {/*Botoes de Navegação*/}
-         <View style={{flex: 1, flexDirection: 'row',  alignItems: 'flex-end', justifyContent: 'center'}}>
-         <TouchableOpacity style={{backgroundColor: '#333232',
-                                  padding: 15,
-                                  paddingLeft: '20%',
-                                  paddingRight: '20%',}}
-            onPress={() => navigation.goBack()}>
-            <Text style={{fontSize: 20, 
-                        color: 'white'}}>
-            Voltar
-          </Text>
-         </TouchableOpacity>
-         <TouchableOpacity style={{backgroundColor: '#232323',
-                                  padding: 15,
-                                  paddingLeft: '16%',
-                                  paddingRight: '16%',
-                                  }} 
-            onPress={chamarModal}>
-          <Text style={{fontSize: 20, 
-                        color: '#FFCF66'}}>
-            Salvar
-          </Text>
-          <Modal visible={modalVisible} animationType='fade' transparent={true}>
-            <ModalConfiguracoesSalvas fechar={() => setModalVisible(false)}/>
-          </Modal>
-        </TouchableOpacity>
-      </View>
+         {/* Botões de Navegação */}
+         <View style={styles.footer}>
+            <TouchableOpacity
+               style={[styles.footerButton, { backgroundColor: '#333232' }]}
+               onPress={() => navigation.goBack()}
+            >
+               <Text style={[styles.footerButtonText,]}>Voltar</Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+               style={[styles.footerButton, {backgroundColor: '#232323'}]}
+               onPress={chamarModal}
+            >
+               <Text style={[styles.footerButtonText, {color:'#FFCF66'}]}>Salvar</Text>
+               <Modal visible={modalVisible} animationType='fade' transparent={true}>
+                  <ModalConfiguracoesSalvas fechar={() => setModalVisible(false)} />
+               </Modal>
+            </TouchableOpacity>
+         </View>
 
       </View>
    ) 
@@ -118,45 +115,43 @@ const styles = StyleSheet.create({
    },
    //estilo do titulo
    containerTitulo: {
-      backgroundColor: '#383535', // Cor de fundo
-      padding: 35, // Espaçamento interno
-      alignItems: 'center', // Centraliza horizontalmente
-      position: 'absolute', // Faz a View ficar no topo
-      top: 0, // Alinha no topo da tela
+      backgroundColor: '#383535',
+      paddingVertical: '10%',
+      alignItems: 'center',
+      position: 'absolute',
+      top: 0,
       left: 0,
       right: 0,
-      zIndex: 1, // Garante que fique acima de outros componentes
+      flex:1,
     },
-   //estilo do texto do titulo
-   textoTitulo:{
+    textoTitulo: {
       color: '#FFCF66',
-      fontSize: 33,
-      fontWeight: '', // Negrito
-   },
-
+      fontSize: height * 0.05,
+    },
 
    //view de configuração
-   containerDistancia:{
+   config:{
       flexDirection: 'row',  // Alinha os itens em linha
       alignItems: 'center',  // Centraliza verticalmente
-      marginBottom: 40,      // Espaçamento entre as linhas
-      bottom:'-35%',
-      flexDirection: 'row',
+      marginBottom: height * 0.04, // Espaçamento entre as linhas
+      width: '100%', // Use 100% da largura disponível
+      justifyContent: 'space-between', // Espaçamento uniforme entre os itens
+      
    },
-   //campos de configuração
+   //container de configuraçoes
    containerConfig:{
-      flex: 1,                       // O contêiner ocupa a tela toda
-      justifyContent: 'center',       // Centraliza verticalmente
-      alignItems: 'center',           // Centraliza horizontalmente
-      marginTop: 100,
+      flex: 1,
+      justifyContent: 'center',
+      alignItems: 'center',
+      paddingTop: height * 0.15, // Ajuste baseado na altura da tela
+      paddingBottom: height * 0.05, // Ajuste baseado na altura da tela
+      width: '90%', // Use 90% da largura da tela
    },
    //estilo do botao
    button:{
       backgroundColor: '#232323',
       padding: 15,
-      marginHorizontal: 20,      // Espaçamento entre os botões e o número
       borderRadius: 5,
-      
    },
    //estilo do texto do campo
    buttonText:{
@@ -166,14 +161,35 @@ const styles = StyleSheet.create({
    },
    //estilo do numero
    numero:{
-      fontSize: 45,
+      fontSize: height * 0.07, // Responsivo com base na altura
       justifyContent: 'center',
-      alignItems:'center',
+      alignItems: 'center',
       color: 'white',
    },
    configText:{
-      fontSize: 35,
+      fontSize: height * 0.05, // Responsivo com base na altura
       color: '#FFFFFF',
-      marginRight: 30,
+      marginRight: 20, // Ajustar se necessário
     },
-})
+    //rodape
+    footer: {
+      position: 'absolute', // Mantém a posição fixa na parte inferior
+      bottom: 0, // Alinha na parte inferior da tela
+      left: 0,
+      right: 0,
+      flexDirection: 'row',
+      justifyContent: 'space-between', // Espaça os botões igualmente
+      backgroundColor: '#6A6A6A', // Fundo igual ao resto da tela
+   },
+   footerButton: {
+      flex: 1, // Cada botão agora ocupará a mesma largura
+      padding: 15,
+      alignItems: 'center',
+      borderWidth: 0,
+   },
+   footerButtonText: {
+      fontSize: 20,
+      color: 'white',
+},
+
+});

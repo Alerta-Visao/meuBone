@@ -1,141 +1,138 @@
-import React from 'react'
+import React from 'react';
 import { useState } from 'react';
-import {View, Text, StyleSheet,TouchableOpacity} from 'react-native'
-import { CheckBox } from 'react-native-elements'
+import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import { CheckBox } from 'react-native-elements';
+import { Dimensions } from 'react-native';
 
-export function AtivarSensores({navigation}){
-   const [check1, setCheck1] = useState(false);
-   const [check2, setCheck2] = useState(false);
-   const [check3, setCheck3] = useState(true);
+const { height } = Dimensions.get('window');
 
-   return(
-      <View style={styles.container}>
-         {/*Titulo Topo*/}
-         <View style={styles.containerTitulo}>
-            <Text style={styles.textoTitulo}>
-               Ativar Sensores
-            </Text>
-         </View>
+export function AtivarSensores({ navigation }) {
+  const [check1, setCheck1] = useState(false);
+  const [check2, setCheck2] = useState(false);
+  const [check3, setCheck3] = useState(true);
 
-         <View style={styles.checkboxContainer}>
-            {/*Check Box 1*/}
-            <View style={styles.checkbox} >
-            <Text style={[styles.checkboxText, {marginRight: 100, marginLeft: 30}]}>Longe</Text>
-            <CheckBox
-                     checked={check1} 
-                     onPress={() => setCheck1(!check1)} 
-                     containerStyle={styles.checkbox} 
-                     checkedColor="#FFCF66" 
-                     uncheckedColor="#FFFFFF"
-                     size={70} 
-                     />
-            </View>
+  return (
+    <View style={styles.container}>
+      {/* Título Topo */}
+      <View style={styles.containerTitulo}>
+        <Text style={styles.textoTitulo}>Ativar Sensores</Text>
+      </View>
 
-            {/*Check Box 2*/}
-            <View style={styles.checkbox}>
-            <Text style={[styles.checkboxText, {marginRight: 101, marginLeft: 30}]}>Médio</Text>
-            <CheckBox
-                     checked={check2} 
-                     onPress={() => setCheck2(!check2)} 
-                     containerStyle={styles.checkbox} 
-                     checkedColor="#FFCF66" 
-                     uncheckedColor="#FFFFFF"
-                     size={70} 
-                     />
-            </View>
+      <View style={styles.checkboxContainer}>
+        {/* Check Box 1 */}
+        <View style={styles.checkbox}>
+          <Text style={[styles.checkboxText, { marginRight: 100, marginLeft: 30 }]}>Longe</Text>
+          <CheckBox
+            checked={check1}
+            onPress={() => setCheck1(!check1)}
+            containerStyle={styles.checkbox}
+            checkedColor="#FFCF66"
+            uncheckedColor="#FFFFFF"
+            size={70}
+          />
+        </View>
 
-            {/*Check Box 3*/}
-            <View style={styles.checkbox}>
-            <Text style={[styles.checkboxText, {marginRight: 20, marginLeft: 30}]}>Muito Perto</Text>
-            <CheckBox
-                     checked={check3} 
-                     onPress={() => setCheck3(!check3)} 
-                     containerStyle={styles.checkbox} 
-                     checkedColor="#FFCF66" 
-                     uncheckedColor="#FFFFFF"
-                     size={70} 
-                     disabled={true}
-                     />
-            </View>
-         </View>
+        {/* Check Box 2 */}
+        <View style={styles.checkbox}>
+          <Text style={[styles.checkboxText, { marginRight: 101, marginLeft: 30 }]}>Médio</Text>
+          <CheckBox
+            checked={check2}
+            onPress={() => setCheck2(!check2)}
+            containerStyle={styles.checkbox}
+            checkedColor="#FFCF66"
+            uncheckedColor="#FFFFFF"
+            size={70}
+          />
+        </View>
 
-         <View style={{flex: 0.5, flexDirection: 'row',  alignItems: 'flex-end', justifyContent: 'center'}}>
-         <TouchableOpacity style={{backgroundColor: '#333232',
-                                  padding: 15,
-                                  paddingLeft: '20%',
-                                  paddingRight: '20%',}}
-            onPress={() => navigation.goBack()}>
-            <Text style={{fontSize: 20, 
-                        color: 'white'}}>
-            Voltar
-          </Text>
-         </TouchableOpacity>
-         <TouchableOpacity style={{backgroundColor: '#232323',
-                                  padding: 15,
-                                  paddingLeft: '16%',
-                                  paddingRight: '16%',}} 
-          onPress={() => navigation.navigate('configAvancada')}>
-          <Text style={{fontSize: 20, 
-                        color: '#FFCF66'}}>
-            Avançado
-          </Text>
+        {/* Check Box 3 */}
+        <View style={styles.checkbox}>
+          <Text style={[styles.checkboxText, { marginRight: 20, marginLeft: 30 }]}>Muito Perto</Text>
+          <CheckBox
+            checked={check3}
+            onPress={() => setCheck3(!check3)}
+            containerStyle={styles.checkbox}
+            checkedColor="#FFCF66"
+            uncheckedColor="#FFFFFF"
+            size={70}
+            disabled={true}
+          />
+        </View>
+      </View>
+
+      {/* Botões na parte inferior (Rodape) */}
+      <View style={styles.rodape}>
+        <TouchableOpacity
+          style={[styles.buttonRodape, { backgroundColor: '#333232' }]}
+          onPress={() => navigation.goBack()}
+        >
+          <Text style={styles.buttonText}>Voltar</Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={[styles.buttonRodape, { backgroundColor: '#232323' }]}
+          onPress={() => navigation.navigate('configAvancada')}
+        >
+          <Text style={[styles.buttonText, { color: '#FFCF66' }]}>Avançado</Text>
         </TouchableOpacity>
       </View>
-
-      </View>
-   ) 
+    </View>
+  );
 }
 
-{/*Definição de Estilos*/}
-
-//estilo da tela
+// Definição de Estilos
 const styles = StyleSheet.create({
-   container:{
-     flex:1,
-     backgroundColor: "#6A6A6A",
-     justifyContent: 'center', // Centraliza vertical
-     alignItems: 'center',      // Centraliza horizontal
-     
-   },
-   //estilo do titulo
-   containerTitulo: {
-      backgroundColor: '#383535', // Cor de fundo
-      padding: 35, // Espaçamento interno
-      alignItems: 'center', // Centraliza horizontalmente
-      position: 'absolute', // Faz a View ficar no topo
-      top: 0, // Alinha no topo da tela
-      left: 0,
-      right: 0,
-      zIndex: 1, // Garante que fique acima de outros componentes
-    },
-   //estilo do texto do titulo
-   textoTitulo:{
-      color: '#FFCF66',
-      fontSize: 40,
-      fontWeight: '', // Negrito
-   },
-   //estilo do checkbox
-   checkbox:{
-      backgroundColor: 'transparent',  // Fundo transparente
-      borderWidth: 0,                  // Remove qualquer borda
-   },
-   //estilo da view do checkbox
-   checkbox: {
-      flexDirection: 'row',  // Alinha os itens em linha
-      alignItems: 'center',  // Centraliza verticalmente
-      marginBottom: 15,      // Espaçamento entre as linhas (checkboxes)
-    },
-    //estilo do texto do checkbox
-    checkboxText:{
-      fontSize: 35,
-      color: '#FFFFFF',
-      marginBottom: 30,
-      //marginRight: '1%',
-    },
-    checkboxContainer:{
-      flex: 1,                       // O contêiner ocupa a tela toda
-      justifyContent: 'center',       // Centraliza verticalmente
-      alignItems: 'center',           // Centraliza horizontalmente
-      marginTop: 100,
-    },
-})
+  container: {
+    flex: 1,
+    backgroundColor: "#6A6A6A",
+    padding: 20,
+  },
+  containerTitulo: {
+    backgroundColor: '#383535',
+    paddingVertical: '10%',
+    alignItems: 'center',
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    flex:1,
+  },
+  textoTitulo: {
+    color: '#FFCF66',
+    fontSize: height * 0.05,
+  },
+  checkbox: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginBottom: 15,
+  },
+  checkboxText: {
+    fontSize: 35,
+    color: '#FFFFFF',
+  },
+  checkboxContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    paddingTop:'20%',
+    paddingBottom:'10%',
+  },
+  rodape: {
+   position: 'absolute', // Mantém a posição fixa na parte inferior
+   bottom: 0, // Alinha na parte inferior da tela
+   left: 0,
+   right: 0,
+   flexDirection: 'row',
+   justifyContent: 'space-between', // Espaça os botões igualmente
+   backgroundColor: '#6A6A6A', // Fundo igual ao resto da tela
+  },
+  buttonRodape: {
+   flex: 1, // Cada botão agora ocupará a mesma largura
+   padding: 15,
+   alignItems: 'center',
+   borderWidth: 0,
+  },
+  buttonText: {
+    fontSize: 20,
+    color: 'white',
+  },
+});

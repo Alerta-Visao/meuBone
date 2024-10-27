@@ -41,12 +41,12 @@ export function HomePA({ navigation }){
 
       <View>
       {/*Botão de Configuração */}
-        <TouchableOpacity onPress={() => navigation.navigate('config')}>
+        <TouchableOpacity style={styles.botoesPrincipais} onPress={() => navigation.navigate('config')}>
           <Image source={require('../../assets/buttonConfig.png')} style={styles.imageButton}/>
         </TouchableOpacity>
       
       {/*Botão de Emergência */}
-        <TouchableOpacity onPress={chamarModalEmergencia}>
+        <TouchableOpacity style={styles.botoesPrincipais} onPress={chamarModalEmergencia}>
           <Image source={require('../../assets/buttonEmergencia.png')} style={styles.imageButton}/>
           <Modal visible={modalEmergenciaVisible} animationType='fade' transparent={true}>
               <ModalEmergencia fechar={() => setModalEmergenciaVisible(false)}/>
@@ -54,7 +54,7 @@ export function HomePA({ navigation }){
         </TouchableOpacity>
 
         {/*Botão de Rastreamento */}  
-        <TouchableOpacity onPress={chamarModalAlarme}>
+        <TouchableOpacity style={styles.botoesPrincipais}onPress={chamarModalAlarme}>
           <Image source={require('../../assets/buttonRastrear.png')} style={styles.imageButton}/>
           <Modal visible={modalAlarmeVisible} animationType='fade' transparent={true}>
               <ModalAlarmeLocalizacao fechar={() => setModalAlarmeVisible(false)}/>
@@ -78,13 +78,14 @@ const styles = StyleSheet.create({
     backgroundColor: "#6A6A6A",
     justifyContent: 'flex-start', // Centraliza vertical
     alignItems: 'center',      // Centraliza horizontal
-    
+    padding: 20
   },
 
   //estilo do botao voltar
   buttonVoltar:{
-    marginTop: 110,
-    right: 150,
+    marginTop: '30%',
+    right: '35%',
+    flex: 0.01, //recurso de responsividade
   },
 
   //estilo da imagem do botao voltar
@@ -100,7 +101,7 @@ const styles = StyleSheet.create({
     left: 0,               // Alinha o botão à esquerda
     right: 0,              // Alinha o botão à direita (ocupando toda a largura)
     height: 80,            // Define a altura do botão
-    justifyContent: 'center', // Centraliza a imagem verticalmente
+    justifyContent: 'center', // Centraliza a imagem verticalmentes
     alignItems: 'center',  // Centraliza a imagem horizontalmente
   },
 
@@ -112,11 +113,18 @@ const styles = StyleSheet.create({
     
   },
 
-  //estilo da imagem dos botoes principais
-  imageButton: {
+  //estilo dos botoes principais
+  botoesPrincipais:{
     width: 150,  // Largura 
     height: 150, // Altura 
-    marginBottom: 20, // Espaço entre os botoes
+    marginBottom: '5%', // Espaço entre os botoes
+  },
+
+  //estilo da imagem dos botoes principais
+  imageButton: {
+    width: '100%',  // Largura 
+    height: '100%', // Altura 
+    
   },
   
 })
