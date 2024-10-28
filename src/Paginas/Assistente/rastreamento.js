@@ -69,26 +69,22 @@ export default function Rastrear({navigation}){
       </MapView>
       )}
 
-            <View style={{flex: 1, flexDirection: 'row',  alignItems: 'flex-end', justifyContent: 'center'}}>
-               <TouchableOpacity style={{backgroundColor: '#333232',
-                                       padding: 16,
-                                       paddingLeft: '20%',
-                                       paddingRight: '20%',}}
-                  onPress={() => navigation.goBack()}>
-                  <Text style={{fontSize: 20, 
-                              color: 'white'}}>
-                  Voltar
-               </Text>
-               </TouchableOpacity>
-               <TouchableOpacity style={{backgroundColor: '#232323',
-                                       padding: 15,
-                                       paddingLeft: '20%',
-                                       paddingRight: '20%',}} 
+            {/* Botões na parte inferior (Rodape) */}
+            <View style={styles.rodape}>
+            <TouchableOpacity
+               style={[styles.buttonRodape, { backgroundColor: '#333232' }]}
+               onPress={() => navigation.goBack()}
+            >
+               <Text style={styles.buttonText}>Voltar</Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+               style={[styles.buttonRodape, { backgroundColor: '#232323' }]}
                onPress={() => navigation.navigate('EscolherUsuario')}>
-               <Image source={require('../../assets/iconeUsuarioPequeno.png')} styles={StyleSheet.icone}/>
+            <Image source={require('../../assets/iconeUsuarioPequeno.png')} styles={StyleSheet.icone}/>
             </TouchableOpacity>
             </View>
-      </View>
+    </View>
+   
    )}
 
 
@@ -101,24 +97,24 @@ const styles = StyleSheet.create({
      backgroundColor: "#6A6A6A",
      justifyContent: 'flex-start',
      alignItems: 'center',
-     paddingTop: 180,
+     paddingTop: '40%',
    },
    //estilo do mapa
    mapa: {
-      width: 350, // Largura fixa do mapa
-      height: 410, // Altura fixa do mapa
-      borderRadius: 100, // Bordas arredondadas, opcional
-      overflow: 'hidden', // Para aplicar o arredondamento corretamente
+      width: '85%', // Largura fixa do mapa
+      height: '80%', // Altura fixa do mapa
     },
     //estilo do titulo
    containerTitulo: {
-      padding: 35, // Espaçamento interno
-      alignItems: 'center', // Centraliza horizontalmente
-      position: 'absolute', // Faz a View ficar no topo
-      top: 25, // Alinha no topo da tela
-      left: 0,
-      right: 0,
-      zIndex: 1, // Garante que fique acima de outros componentes
+         backgroundColor: 'transparent',
+         paddingVertical: '9%',
+         alignItems: 'center',
+         position: 'absolute',
+         top: 0,
+         left: 0,
+         right: 0,
+         flex:1,
+
     },
    //estilo do texto do titulo
    textoTitulo:{
@@ -136,5 +132,26 @@ const styles = StyleSheet.create({
       paddingTop: 20,
       fontSize: 20,
    },
+
+   //rodape
+   rodape: {
+      position: 'absolute', // Mantém a posição fixa na parte inferior
+      bottom: 0, // Alinha na parte inferior da tela
+      left: 0,
+      right: 0,
+      flexDirection: 'row',
+      justifyContent: 'space-between', // Espaça os botões igualmente
+      backgroundColor: '#6A6A6A', // Fundo igual ao resto da tela
+     },
+     buttonRodape: {
+      flex: 1, // Cada botão agora ocupará a mesma largura
+      padding: 15,
+      alignItems: 'center',
+      borderWidth: 0,
+     },
+     buttonText: {
+       fontSize: 20,
+       color: 'white',
+     },
  })
 

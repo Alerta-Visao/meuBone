@@ -1,6 +1,8 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, Image, TextInput, TouchableOpacity, Modal} from 'react-native';
 import { useState } from 'react';
+
+{/*Importando Modal Usado */}
 import ModalAlteracoesRealizadas from '../../../Modal/modalAlteracoesRealizadas'
 
 export default function UsuarioPessoaAssistida({navigation}) {

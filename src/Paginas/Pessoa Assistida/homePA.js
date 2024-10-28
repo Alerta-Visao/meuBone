@@ -2,15 +2,19 @@ import React from 'react'
 import { useState } from 'react'
 import { View, Text, StyleSheet, TouchableOpacity, Image, Modal} from 'react-native'
 
+{/*Importando os Modais Usados */}
 import ModalConexaoEstabelecida from '../../../Modal/modalConexaoEstabelecida'
 import ModalEmergencia from '../../../Modal/modalEmergencia'
 import ModalAlarmeLocalizacao from '../../../Modal/modalAlarmeLocalizacao'
 
+{/*Funcao HomePA */}
 export function HomePA({ navigation }){
+  {/*Constantes que Definem o estado dos modais*/}
   const [modalBluetoothVisible, setModalBluetoothVisible] = useState(false)
   const [modalEmergenciaVisible, setModalEmergenciaVisible] = useState(false)
   const [modalAlarmeVisible, setModalAlarmeVisible] = useState(false)
 
+  {/*Funções que mudam o estado do modal de desativado para ativado */}
   function chamarModalBluetooth(){
     setModalBluetoothVisible(true);
   }
@@ -22,9 +26,10 @@ export function HomePA({ navigation }){
   }
 
   return(
+    //Container Principal
     <View style={styles.container}> 
-    {/*Botão Conectar ao Bluetooth */}
 
+      {/*Botão Conectar ao Bluetooth */}
       <TouchableOpacity style={styles.buttonTopStyle} onPress={chamarModalBluetooth}>
         <Image source={require('../../assets/buttonBluetooth.png')} style={styles.imageBluetooth}/>
           <Modal visible={modalBluetoothVisible} animationType='fade' transparent={true}>
@@ -32,20 +37,21 @@ export function HomePA({ navigation }){
           </Modal>
       </TouchableOpacity>
 
-    {/*Botão Conectar Voltar */}
+      {/*Botão Voltar */}
       <View>
       <TouchableOpacity style={styles.buttonVoltar} onPress={() => navigation.goBack()}>
           <Image source={require('../../assets/buttonVoltar.png')} style={styles.imageVoltar} />
         </TouchableOpacity>
       </View>
 
+      {/*Menu */}
       <View>
-      {/*Botão de Configuração */}
+        {/*Botão de Configuração */}
         <TouchableOpacity style={styles.botoesPrincipais} onPress={() => navigation.navigate('config')}>
           <Image source={require('../../assets/buttonConfig.png')} style={styles.imageButton}/>
         </TouchableOpacity>
       
-      {/*Botão de Emergência */}
+        {/*Botão de Emergência */}
         <TouchableOpacity style={styles.botoesPrincipais} onPress={chamarModalEmergencia}>
           <Image source={require('../../assets/buttonEmergencia.png')} style={styles.imageButton}/>
           <Modal visible={modalEmergenciaVisible} animationType='fade' transparent={true}>
@@ -60,71 +66,63 @@ export function HomePA({ navigation }){
               <ModalAlarmeLocalizacao fechar={() => setModalAlarmeVisible(false)}/>
           </Modal>
         </TouchableOpacity>
-        </View>
-
-        
-    </View>
-
-          
-  )
-}
+      </View>{/*Fim do Menu */}
+    </View>//fim do Container Principal      
+  )//fim do return
+}//fim da funcao HomePA
 
 {/*Definição de Estilos*/}
 
-//estilo da tela
+//Container Principal
 const styles = StyleSheet.create({
   container:{
     flex:1,
     backgroundColor: "#6A6A6A",
-    justifyContent: 'flex-start', // Centraliza vertical
-    alignItems: 'center',      // Centraliza horizontal
+    justifyContent: 'flex-start',//centraliza vertical
+    alignItems: 'center', // centraliza horizontal
     padding: 20
   },
 
-  //estilo do botao voltar
+  //Botao Voltar
   buttonVoltar:{
     marginTop: '30%',
-    right: '35%',
+    right: '37%',
     flex: 0.01, //recurso de responsividade
   },
-
-  //estilo da imagem do botao voltar
+  //Imagem do Botao Voltar
   imageVoltar:{
-    width: 36,  // Largura 
-    height: 36, // Altura 
+    width: 36,  // largura 
+    height: 36, // altura 
   },
 
-  //estilo do botao de bluetooth
+  //Botao Bluetooth
   buttonTopStyle: {
-    position: 'absolute',  // Faz o botão ficar fixo
-    top: 0,                // Fixa o botão no topo da tela
-    left: 0,               // Alinha o botão à esquerda
-    right: 0,              // Alinha o botão à direita (ocupando toda a largura)
-    height: 80,            // Define a altura do botão
-    justifyContent: 'center', // Centraliza a imagem verticalmentes
-    alignItems: 'center',  // Centraliza a imagem horizontalmente
+    position: 'absolute',  // torna botao fixo
+    top: 0,                // fixa no topo da tela
+    left: 0,               // alinha a esquerda
+    right: 0,              // alinha a direita (ocupando toda a largura)
+    height: 80,            // altura
+    justifyContent: 'center', // Centraliza verticalmentes
+    alignItems: 'center',  // Centraliza horizontalmente
   },
-
-  //estilo da imagem do botão de bluetooth
+  //Imagem do botão de bluetooth
   imageBluetooth: {
-    width: '100%',         // Faz a imagem ocupar toda a largura do botão
-    height: '100%',        // Faz a imagem ocupar toda a altura do botão
-    resizeMode: 'auto', // ajusta a proporção da imagem
-    
+    width: '100%',         // faz a imagem ocupar toda a largura do botão
+    height: '100%',        // faz a imagem ocupar toda a altura do botão
+    //resizeMode: 'auto', 
   },
 
-  //estilo dos botoes principais
+  //Botoes Principais
   botoesPrincipais:{
     width: 150,  // Largura 
     height: 150, // Altura 
     marginBottom: '5%', // Espaço entre os botoes
   },
 
-  //estilo da imagem dos botoes principais
+  //Imagem dos botoes principais
   imageButton: {
     width: '100%',  // Largura 
     height: '100%', // Altura 
-    
   },
   
 })

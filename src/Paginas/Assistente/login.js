@@ -1,9 +1,14 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, Image, TextInput, TouchableOpacity} from 'react-native';
 
+{/*Funcao Login */}
 export default function Login({navigation}) {
+
   return (
+    //Container Principal
     <View style={styles.container}>
+
+      {/*Container do Topo da Pagina*/}
       <View style={{flex: 1.5, flexDirection: 'row', alignItems: 'center', justifyContent: 'center', columnGap: 65,
                     marginLeft: '-24%'
       }}>
@@ -15,6 +20,8 @@ export default function Login({navigation}) {
       <View style={{flex: 1, alignItems: 'center', marginTop: '-8%'}}>
         <Text style={styles.textoLogin}>Login</Text>
       </View>
+
+      {/*Formulario de Login */}
       <View style={{flex: 2.5, alignItems: 'center', }}>
         <TextInput style={styles.input}  
           placeholder='Usuário'
@@ -25,30 +32,42 @@ export default function Login({navigation}) {
           placeholderTextColor = "white"
           secureTextEntry={true}
         />
+
+        {/*Botao de Entrar */}
         <TouchableOpacity onPress={() => navigation.navigate('Rastrear')} style={styles.fundoBotao}>
           <Text style={styles.textoBotao}>
             Entrar
           </Text>
         </TouchableOpacity>
+
+        {/*Botao de Cadastrar-Se */}
         <TouchableOpacity onPress={() => navigation.navigate('CadastroAcompanhante')}>
           <Text style={styles.textoCadatro}>Cadastre-se</Text>
         </TouchableOpacity>
-      </View>
+
+      </View>{/*Fim do Formulario de Login */}
+
       <View style={{flex: 0.5, flexDirection: 'row',  alignItems: 'center', justifyContent: 'center'}}></View>
-    </View>
+
+    </View>//fim do container principal
   );
 }
 
+{/*Definição de Estilos */}
+
+//Container Principal
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#414141',
   },
+  //Logo
   logo:{
     marginTop: 40,
     height: 100,
     width: 120,
   },
+  //Input
   input: {
     paddingLeft: 10,
     fontSize: 20,
@@ -63,12 +82,14 @@ const styles = StyleSheet.create({
     borderColor: 'white',
     marginBottom: '4%',
   },
+  //Texto do Topo
   textoLogin: {
     marginTop: '5%',
     color: '#FFCF66',
     marginBottom: '15%',
     fontSize: 20,
   },
+  //Botao de Entrar
   fundoBotao: {
     marginTop: '5%',
     backgroundColor: '#FFCF66',
@@ -78,14 +99,16 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  //Texto do Botao Entrar
   textoBotao:{
     fontSize: 20,
     fontWeight: 'bold',
   },
+  //Texto do Cadastrar-Se
   textoCadatro: {
     fontWeight: 'bold',
     color: '#FFCF66',
     marginTop: 60,
     fontSize: 20,
   },
-});
+});//Fim dos Estilos

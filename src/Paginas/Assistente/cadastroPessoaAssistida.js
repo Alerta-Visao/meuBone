@@ -2,17 +2,25 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, Image, TextInput, TouchableOpacity, Modal } from 'react-native';
 import { useState } from 'react';
 
+{/*Importanto Modal Usado */}
 import ModalCadastroRealizado from '../../../Modal/modalCadastroRealizado';
 
+{/*Funcao CadastroPessoaAssistida */}
 export default function CadastroPessoaAssistida({navigation}) {
+
+  {/*Constante que define estado do modal */}
   const [modalVisible, setModalVisible] = useState(false)
 
+  {/*Funcao que ativa o modal */}
   function chamarModal(){
     setModalVisible(true);
   }
 
   return (
+    //Container Principal
     <View style={styles.container}>
+
+      {/*Container do Titulo */}
       <View style={{flex: 1.5, alignItems: 'center', justifyContent: 'center', alignItems: 'center', columnGap: 65,
       }}>
         <Image style={styles.logo}  source={require('../../assets/Logo-sem-fundo e sem letra 2.png')}></Image>
@@ -20,6 +28,8 @@ export default function CadastroPessoaAssistida({navigation}) {
       <View style={{flex: 1, alignItems: 'center', marginTop: '-8%'}}>
         <Text style={styles.textoCadatro}>Cadastre a Pessoa Assistida:</Text>
       </View>
+
+      {/*Formulario de Cadastro */}
       <View style={{flex: 0.5, flexDirection: 'row', justifyContent: 'center', columnGap: 20}}>
       <TextInput style={{
                     paddingLeft: 10,
@@ -52,6 +62,7 @@ export default function CadastroPessoaAssistida({navigation}) {
           placeholderTextColor = "white"
         />
       </View>
+      {/*Telefone e Email */}
       <View style={{flex: 2, alignItems: 'center', }}>
       <TextInput style={styles.input}  
         placeholder='Telefone'
@@ -63,7 +74,9 @@ export default function CadastroPessoaAssistida({navigation}) {
         placeholderTextColor = "white"
         keyboardType='email-address'
       />
-      </View>
+      </View>{/*Fim do Formulario de Cadastro */}
+
+      {/*Rodape (navegação) */}
       <View style={{flex: 0.5, flexDirection: 'row',  alignItems: 'flex-end', justifyContent: 'center'}}>
         <TouchableOpacity style={{backgroundColor: '#333232',
                                   padding: 15,
@@ -88,21 +101,27 @@ export default function CadastroPessoaAssistida({navigation}) {
             <ModalCadastroRealizado navigation={() => navigation.navigate('Gps')}/>
           </Modal>
         </TouchableOpacity>
-      </View>
-    </View>
-  );
-}
+      </View>{/*Fim do Rodape */}
+    </View>//fim do container principal
+  );//fim do return
+}//fim da funcao cadastroPessoaAssistida
 
+
+{/*Definição de Estilos */}
+
+//Container Principal
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#414141',
   },
+  //Logo
   logo:{
     marginTop: 40,
     height: 100,
     width: 120,
   },
+  //Input
   input: {
     color: 'white',
     paddingLeft: 10,
@@ -117,10 +136,11 @@ const styles = StyleSheet.create({
     borderColor: 'white',
     marginBottom: '4%',
   },
+  //Testo do Titulo da Pagina
   textoCadatro: {
     marginTop: '5%',
     color: '#FFCF66',
     marginBottom: '15%',
     fontSize: 20,
   },
-});
+});//fim dos estilos
