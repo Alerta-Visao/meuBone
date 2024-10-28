@@ -1,23 +1,23 @@
 {
   "expo": {
-    "name": "Bone",
-    "slug": "Bone",
+    "name": "meuBone",
+    "slug": "meuBone",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./assets/splash.png",
+      "image": "./src/assets/Logo-sem-fundo.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#414141"
     },
     "ios": {
       "supportsTablet": true
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#ffffff"
+        "foregroundImage": "./src/assets/Logo-sem-fundo.png",
+        "backgroundColor": "#414141"
       }
     },
     "web": {
