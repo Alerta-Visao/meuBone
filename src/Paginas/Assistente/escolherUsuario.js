@@ -33,7 +33,7 @@ export default function EscolherUsuario({navigation}) {
                                   paddingLeft: '50%',
                                   paddingRight: '50%',}} 
           onPress={() => navigation.goBack()}>
-            <Image source={require('../../assets/iconeUsuarioPequeno.png')}/>
+            <Image source={require('../../assets/iconeGps.png')}/>
         </TouchableOpacity>
       </View>
     </View>//fim do Container Principal

@@ -98,7 +98,7 @@ export default function CadastroPessoaAssistida({navigation}) {
             Confirmar
           </Text>
           <Modal visible={modalVisible} animationType='fade' transparent={true}>
-            <ModalCadastroRealizado navigation={() => navigation.navigate('Gps')}/>
+            <ModalCadastroRealizado navigation={() => navigation.navigate('Rastrear')}/>
           </Modal>
         </TouchableOpacity>
       </View>{/*Fim do Rodape */}
