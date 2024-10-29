@@ -15,13 +15,24 @@
       "supportsTablet": true
     },
     "android": {
+      "config":{
+        "googleMaps":{
+          "apiKey": "AIzaSyAWeXmOrKrOUFHzIEG2T1IMIx2cQHHBPjM"
+        }
+      },
       "adaptiveIcon": {
         "foregroundImage": "./src/assets/Logo-sem-fundo.png",
         "backgroundColor": "#414141"
-      }
+      },
+      "package": "com.alertavisao.meuBone"
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "fa30df1b-3a87-4463-b3f6-6f083cd2609b"
+      }
     }
   }
 }

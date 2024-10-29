@@ -1,7 +1,7 @@
 import React from 'react'
 import { View, StyleSheet, Text, TouchableOpacity, Image} from 'react-native'
 import { useEffect, useState } from 'react';
-import MapView, { Marker } from 'react-native-maps';
+import MapView, { Marker, PROVIDER_GOOGLE } from 'react-native-maps';
 import * as Location from 'expo-location';
 
 export default function Rastrear({navigation}){
@@ -39,6 +39,7 @@ export default function Rastrear({navigation}){
          </View>
       {location && (
       <MapView
+         provider={PROVIDER_GOOGLE}
          style={styles.mapa}
          initialRegion={{
             latitude: location.coords.latitude,
