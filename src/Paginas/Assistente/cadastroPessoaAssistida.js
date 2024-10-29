@@ -2,14 +2,27 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, Image, TextInput, TouchableOpacity, Modal } from 'react-native';
 import { useState } from 'react';
 
-{/*Importanto Modal Usado */}
+{/*Importando Modal Usado */}
 import ModalCadastroRealizado from '../../../Modal/modalCadastroRealizado';
 
 {/*Funcao CadastroPessoaAssistida */}
 export default function CadastroPessoaAssistida({navigation}) {
-
   {/*Constante que define estado do modal */}
   const [modalVisible, setModalVisible] = useState(false)
+
+  //variaveis para armazenar os dados
+  const [nome, setNome] = useState('');
+  const [sobrenome, setSobrenome] = useState('');
+  const [telefone, setTelefone] = useState('');
+  const [email, setEmail] = useState('');
+
+  //funcão que realiza o cadastro do acompanhante
+  function CadastrarPessoaAssistida() {
+    const dadosCadastro = { nome, sobrenome, telefone, email};
+    console.log("Dados cadastrados:", dadosCadastro);
+    navigation.navigate('CadastroPessoaAssistida');  // Navegar para a próxima tela
+    // futura conexao com banco de dados
+  }
 
   {/*Funcao que ativa o modal */}
   function chamarModal(){
@@ -45,6 +58,8 @@ export default function CadastroPessoaAssistida({navigation}) {
                     color: 'white'}} 
                     placeholder='Nome'
                     placeholderTextColor = "white"
+                    value={nome}
+                    onChangeText={setNome}
         />
         <TextInput style={{
                     paddingLeft: 10,
@@ -56,10 +71,13 @@ export default function CadastroPessoaAssistida({navigation}) {
                     borderTopWidth: 2,
                     borderRightWidth: 2,
                     borderBottomWidth: 2,
-                    borderColor: 'white'
+                    borderColor: 'white',
+                    color:'white'
         }} 
           placeholder='Sobrenome'
           placeholderTextColor = "white"
+          value={sobrenome}
+          onChangeText={setSobrenome}
         />
       </View>
       {/*Telefone e Email */}
@@ -68,11 +86,15 @@ export default function CadastroPessoaAssistida({navigation}) {
         placeholder='Telefone'
         placeholderTextColor = "white"
         keyboardType='number-pad'
+        value={telefone}
+        onChangeText={setTelefone}
       />
       <TextInput style={styles.input} 
         placeholder='Email'
         placeholderTextColor = "white"
         keyboardType='email-address'
+        value={email}
+        onChangeText={setEmail}
       />
       </View>{/*Fim do Formulario de Cadastro */}
 
@@ -92,7 +114,7 @@ export default function CadastroPessoaAssistida({navigation}) {
                                   padding: 15,
                                   paddingLeft: '16%',
                                   paddingRight: '16%',}} 
-          onPress={chamarModal}>
+          onPress={CadastrarPessoaAssistida}>
           <Text style={{fontSize: 20, 
                         color: '#FFCF66'}}>
             Confirmar

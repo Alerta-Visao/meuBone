@@ -8,6 +8,22 @@ import ModalAlteracoesRealizadas from '../../../Modal/modalAlteracoesRealizadas'
 export default function UsuarioPessoaAssistida({navigation}) {
     const [modalVisible, setModalVisible] = useState(false)
 
+    //variaveis para armazenar os dados
+    const [nome, setNome] = useState('');
+    const [sobrenome, setSobrenome] = useState('');
+    const [telefone, setTelefone] = useState('');
+    const [email, setEmail] = useState('');
+    const [usuario, setUsuario] = useState('');
+    const [senha, setSenha] = useState('');
+
+    //funcão que realiza o cadastro do acompanhante
+    function AtualizarAcompanhante() {
+      const dadosCadastro = { nome, sobrenome, telefone, email, usuario, senha };
+      console.log("Dados cadastrados:", dadosCadastro);
+      navigation.navigate('EscolherUsuario');  // Navegar para a próxima tela
+      // futura conexao com banco de dados
+    }//fim da funcao
+
     function chamarModal(){
       setModalVisible(true);
     }
@@ -32,6 +48,8 @@ export default function UsuarioPessoaAssistida({navigation}) {
                     color: 'white'}} 
                     placeholder='Nome'
                     placeholderTextColor = "white"
+                    value={nome}
+                    onChangeText={setNome}
         />
         <TextInput style={{
                     paddingLeft: 10,
@@ -47,6 +65,8 @@ export default function UsuarioPessoaAssistida({navigation}) {
         }} 
           placeholder='Sobrenome'
           placeholderTextColor = "white"
+          value={sobrenome}
+          onChangeText={setSobrenome}
         />
       </View>
       <View style={{flex: 2, alignItems: 'center', }}>
@@ -54,19 +74,27 @@ export default function UsuarioPessoaAssistida({navigation}) {
         placeholder='Telefone'
         placeholderTextColor = "white"
         keyboardType='number-pad'
+        value={telefone}
+        onChangeText={setTelefone}
       />
       <TextInput style={styles.input} 
         placeholder='Email'
         placeholderTextColor = "white"
+        value={email}
+        onChangeText={setEmail}
       />
       <TextInput style={styles.input}  
         placeholder='Usuário'
         placeholderTextColor = "white"
+        value={usuario}
+        onChangeText={setUsuario}
       />
       <TextInput style={styles.input} 
         placeholder='Senha'
         placeholderTextColor = "white"
         secureTextEntry={true}
+        value={senha}
+        onChangeText={setSenha}
       />
       </View>
       <View style={{flex: 0.5, flexDirection: 'row',  alignItems: 'flex-end', justifyContent: 'center'}}>
@@ -84,7 +112,7 @@ export default function UsuarioPessoaAssistida({navigation}) {
                                   padding: 15,
                                   paddingLeft: '20%',
                                   paddingRight: '20%',}} 
-          onPress={chamarModal}>
+          onPress={AtualizarAcompanhante}>
           <Text style={{fontSize: 20, 
                         color: '#FFCF66'}}>
             Salvar

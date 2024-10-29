@@ -1,8 +1,21 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, Image, TextInput, TouchableOpacity} from 'react-native';
+import { useState } from 'react';
 
 {/*Funcao Login */}
 export default function Login({navigation}) {
+
+  //variaveis para armazenar os dados
+    const [usuario, setUsuario] = useState('');
+    const [senha, setSenha] = useState('');
+
+    //funcão que realiza o cadastro do acompanhante
+    function FazerLogin() {
+      const dadosCadastro = { usuario, senha };
+      console.log("Dados cadastrados:", dadosCadastro);
+      navigation.navigate('Rastrear');  // Navegar para a próxima tela
+      // futura conexao com banco de dados
+    }//fim da funcao
 
   return (
     //Container Principal
@@ -26,15 +39,19 @@ export default function Login({navigation}) {
         <TextInput style={styles.input}  
           placeholder='Usuário'
           placeholderTextColor = "white"
+          value={usuario}
+          onChangeText={setUsuario}
         />
         <TextInput style={styles.input} 
           placeholder='Senha'
           placeholderTextColor = "white"
           secureTextEntry={true}
+          value={senha}
+          onChangeText={setSenha}
         />
 
         {/*Botao de Entrar */}
-        <TouchableOpacity onPress={() => navigation.navigate('Rastrear')} style={styles.fundoBotao}>
+        <TouchableOpacity onPress={FazerLogin} style={styles.fundoBotao}>
           <Text style={styles.textoBotao}>
             Entrar
           </Text>

@@ -1,14 +1,31 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, Image, TextInput, TouchableOpacity} from 'react-native';
+import { useState } from 'react';
 
 {/*Funcao CadastroAcompanhante */}
 export default function CadastroAcompanhante({navigation}) {
+
+  //variaveis para armazenar os dados
+    const [nome, setNome] = useState('');
+    const [sobrenome, setSobrenome] = useState('');
+    const [telefone, setTelefone] = useState('');
+    const [email, setEmail] = useState('');
+    const [usuario, setUsuario] = useState('');
+    const [senha, setSenha] = useState('');
+
+    //funcão que realiza o cadastro do acompanhante
+    function CadastrarAssistente() {
+      const dadosCadastro = { nome, sobrenome, telefone, email, usuario, senha };
+      console.log("Dados cadastrados:", dadosCadastro);
+      navigation.navigate('CadastroPessoaAssistida');  // Navegar para a próxima tela
+      // futura conexao com banco de dados
+    }
 
   return (
     //Container Principal
     <View style={styles.container}>
 
-      {/*Container da Logo */}
+      {/*Container do Titulo */}
       <View style={{flex: 1.5, alignItems: 'center', justifyContent: 'center', alignItems: 'center', columnGap: 65,
       }}>
         <Image style={styles.logo}  source={require('../../assets/Logo-sem-fundo e sem letra 2.png')}></Image>
@@ -36,6 +53,8 @@ export default function CadastroAcompanhante({navigation}) {
                     color: 'white'}} 
                     placeholder='Nome'
                     placeholderTextColor = "white"
+                    value={nome}
+                    onChangeText={setNome}
         />
         <TextInput style={{
                     paddingLeft: 10,
@@ -47,33 +66,44 @@ export default function CadastroAcompanhante({navigation}) {
                     borderTopWidth: 2,
                     borderRightWidth: 2,
                     borderBottomWidth: 2,
-                    borderColor: 'white'
+                    borderColor: 'white',
+                    color: 'white'
         }} 
           placeholder='Sobrenome'
           placeholderTextColor = "white"
+          value={sobrenome}
+          onChangeText={setSobrenome}
         />
       {/*Telefone, Email, Usuario, Senha */}
       </View>
-      <View style={{flex: 2, alignItems: 'center', }}>
-      <TextInput style={styles.input}  
-        placeholder='Telefone'
-        placeholderTextColor = "white"
-        keyboardType='number-pad'
-      />
-      <TextInput style={styles.input} 
-        placeholder='Email'
-        placeholderTextColor = "white"
-        keyboardType='email-address'
-      />
-      <TextInput style={styles.input}  
-        placeholder='Usuário'
-        placeholderTextColor = "white"
-      />
-      <TextInput style={styles.input} 
-        placeholder='Senha'
-        placeholderTextColor = "white"
-        secureTextEntry={true}
-      />
+        <View style={{flex: 2, alignItems: 'center', }}>
+        <TextInput style={styles.input}  
+          placeholder='Telefone'
+          placeholderTextColor = "white"
+          keyboardType='number-pad'
+          value={telefone}
+          onChangeText={setTelefone}
+        />
+        <TextInput style={styles.input} 
+          placeholder='Email'
+          placeholderTextColor = "white"
+          keyboardType='email-address'
+          value={email}
+          onChangeText={setEmail}
+        />
+        <TextInput style={styles.input}  
+          placeholder='Usuário'
+          placeholderTextColor = "white"
+          value={usuario}
+          onChangeText={setUsuario}
+        />
+        <TextInput style={styles.input} 
+          placeholder='Senha'
+          placeholderTextColor = "white"
+          secureTextEntry={true}
+          value={senha}
+          onChangeText={setSenha}
+        />
       </View>{/*FIm do Formulario */}
 
       {/*Rodape (navegação) */}
@@ -92,7 +122,7 @@ export default function CadastroAcompanhante({navigation}) {
                                   padding: 15,
                                   paddingLeft: '16%',
                                   paddingRight: '16%',}} 
-          onPress={() => navigation.navigate('CadastroPessoaAssistida')}>
+          onPress={CadastrarAssistente}>
           <Text style={{fontSize: 20, 
                         color: '#FFCF66'}}>
             Confirmar
@@ -102,6 +132,8 @@ export default function CadastroAcompanhante({navigation}) {
     </View>//fim do container principal
   );//fim do return
 }//fim da funcao
+
+
 
 {/*Definição de Estilos */}
 
@@ -117,7 +149,7 @@ const styles = StyleSheet.create({
     height: 100,
     width: 120,
   },
-  //Texto Input
+  //Input
   input: {
     color: 'white',
     paddingLeft: 10,
@@ -139,4 +171,4 @@ const styles = StyleSheet.create({
     marginBottom: '15%',
     fontSize: 20,
   },
-});
+});//fim dos estilos

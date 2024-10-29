@@ -6,6 +6,20 @@ import ModalAlteracoesRealizadas from '../../../Modal/modalAlteracoesRealizadas'
 export default function UsuarioPessoaAssistida({navigation}) {
     const [modalVisible, setModalVisible] = useState(false)
 
+    //variaveis para armazenar os dados
+    const [nome, setNome] = useState('');
+    const [sobrenome, setSobrenome] = useState('');
+    const [telefone, setTelefone] = useState('');
+    const [email, setEmail] = useState('');
+
+  //funcão que realiza o cadastro do acompanhante
+  function AtualizarPessoaAssistida() {
+    const dadosCadastro = { nome, sobrenome, telefone, email};
+    console.log("Dados cadastrados:", dadosCadastro);
+    navigation.navigate('EscolherUsuario');  // Navegar para a próxima tela
+    // futura conexao com banco de dados
+  }
+
     function chamarModal(){
       setModalVisible(true);
     }
@@ -30,6 +44,8 @@ export default function UsuarioPessoaAssistida({navigation}) {
                     color: 'white'}} 
                     placeholder='Nome'
                     placeholderTextColor = "white"
+                    value={nome}
+                    onChangeText={setNome}
         />
         <TextInput style={{
                     paddingLeft: 10,
@@ -45,6 +61,8 @@ export default function UsuarioPessoaAssistida({navigation}) {
         }} 
           placeholder='Sobrenome'
           placeholderTextColor = "white"
+          value={sobrenome}
+          onChangeText={setSobrenome}
         />
       </View>
       <View style={{flex: 2, alignItems: 'center', }}>
@@ -52,10 +70,14 @@ export default function UsuarioPessoaAssistida({navigation}) {
         placeholder='Telefone'
         placeholderTextColor = "white"
         keyboardType='number-pad'
+        value={telefone}
+        onChangeText={setTelefone}
       />
       <TextInput style={styles.input} 
         placeholder='Email'
         placeholderTextColor = "white"
+        value={email}
+        onChangeText={setEmail}
       />
       </View>
       <View style={{flex: 0.5, flexDirection: 'row',  alignItems: 'flex-end', justifyContent: 'center'}}>
@@ -73,7 +95,7 @@ export default function UsuarioPessoaAssistida({navigation}) {
                                   padding: 15,
                                   paddingLeft: '20%',
                                   paddingRight: '20%',}} 
-          onPress={chamarModal}>
+          onPress={AtualizarPessoaAssistida}>
           <Text style={{fontSize: 20, 
                         color: '#FFCF66'}}>
             Salvar
