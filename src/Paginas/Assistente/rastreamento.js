@@ -1,8 +1,10 @@
 import React from 'react'
-import { View, StyleSheet, Text, TouchableOpacity, Image} from 'react-native'
+import { View, StyleSheet, Text, TouchableOpacity, Image, Dimensions} from 'react-native'
 import { useEffect, useState } from 'react';
 import MapView, { Marker, PROVIDER_GOOGLE } from 'react-native-maps';
 import * as Location from 'expo-location';
+
+const { width, height } = Dimensions.get('window'); // recurso de responsividade que obtem as dimensões da tela
 
 export default function Rastrear({navigation}){
    const [location, setLocation] = useState(null);
@@ -102,8 +104,8 @@ const styles = StyleSheet.create({
    },
    //estilo do mapa
    mapa: {
-      width: '85%', // Largura fixa do mapa
-      height: '80%', // Altura fixa do mapa
+      width: width * 0.9, // Largura relativa à largura da tela
+      height: height * 0.6, // Altura relativa à altura da tela
     },
     //estilo do titulo
    containerTitulo: {
@@ -120,7 +122,7 @@ const styles = StyleSheet.create({
    //estilo do texto do titulo
    textoTitulo:{
       color: '#FFCF66',
-      fontSize: 40,
+      fontSize: height * 0.05,//responsividade
       fontWeight: '', // Negrito
    },
    //container subtitulo
@@ -131,7 +133,7 @@ const styles = StyleSheet.create({
       justifyContent: 'flex-start',
       alignItems: 'center',
       paddingTop: 20,
-      fontSize: 20,
+      fontSize: height * 0.03,//responsividade
    },
 
    //rodape
