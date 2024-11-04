@@ -145,6 +145,7 @@ const styles = StyleSheet.create({
       paddingTop: height * 0.15, // Ajuste baseado na altura da tela
       paddingBottom: height * 0.05, // Ajuste baseado na altura da tela
       width: '90%', // Use 90% da largura da tela
+      padding: height * 0.02,// bordas
    },
    //View de Configuração
    config:{
@@ -164,12 +165,12 @@ const styles = StyleSheet.create({
    //Texto do Botão de Configuração (+ e -)
    buttonText:{
       color: 'white',
-      fontSize: 20,
+      fontSize: height * 0.03,
       fontWeight: 'bold',
    },
    //Numero da Configuraçao (variavel)
    numero:{
-      fontSize: height * 0.07, // responsivo com base na altura
+      fontSize: height * 0.06, // responsivo com base na altura
       justifyContent: 'center',
       alignItems: 'center',
       color: 'white',
